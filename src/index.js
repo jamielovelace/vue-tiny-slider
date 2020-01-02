@@ -251,7 +251,7 @@ var VueTinySlider = {
 	methods: {
 		$_vueTinySlider_subscribeTo (eventName) {
 			this.slider.events.on(eventName, (info) => {
-				vueEventName = eventName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
+				let vueEventName = eventName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 				this.$emit(vueEventName, info);
 			});
 		},
@@ -266,7 +266,7 @@ var VueTinySlider = {
 			this.$emit('rebuild');
 		},
 		getInfo: function() {
-			this.$emit('getInfo', this.slider.getInfo(), this.slider);
+			this.$emit('get-info', this.slider.getInfo(), this.slider);
 		},
 		destroy: function() {
 			this.slider.destroy();
