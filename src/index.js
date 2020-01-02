@@ -251,7 +251,8 @@ var VueTinySlider = {
 	methods: {
 		$_vueTinySlider_subscribeTo (eventName) {
 			this.slider.events.on(eventName, (info) => {
-				this.$emit(eventName, info);
+				vueEventName = eventName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
+				this.$emit(vueEventName, info);
 			});
 		},
 		$_vueTinySlider_subscribeToAll () {
